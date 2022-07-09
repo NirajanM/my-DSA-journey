@@ -8,11 +8,12 @@ typedef struct node
     struct node *next;
 } nd;
 
+// creating global first and last struct pointer and assigning the inital and final node to it later,
 nd *first;
 nd *last;
 
-void traverse(); // creating global first and last struct pointer and assigning the inital and final node to it,
-// we now don't need to pass any argument in this function because one is same as first after line no 24.
+// now we now don't need to pass any argument in this function because "one" will be same as "first" after line no 25.
+void traverse();
 
 int main()
 {
@@ -21,7 +22,7 @@ int main()
     one = (nd *)malloc(sizeof(nd));
     two = (nd *)malloc(sizeof(nd));
     three = (nd *)malloc(sizeof(nd));
-    first = one;  // now first and one is same . i.e first->data is same as one->data
+    first = one;  // now first and one is same . i.e first->data is same as one->data and so on
     last = three; // and now last and three is same
 
     one->data = 10;
