@@ -15,22 +15,10 @@ void insertAtFirst(int);
 
 int main()
 {
-    nd *one, *two, *three;
-
-    one = (nd *)malloc(sizeof(nd));
-    two = (nd *)malloc(sizeof(nd));
-    three = (nd *)malloc(sizeof(nd));
-    first = one;
-    last = three;
-
-    // one->data = 10;
-    // one->next = two;
-    // two->data = 20;
-    // two->next = three;
-    // three->data = 30;
-    // three->next = NULL;
-    insertAtFirst(6);
-    insertAtFirst(0);
+    insertAtFirst(5);
+    traverse();
+    insertAtFirst(5);
+    traverse();
     getch();
     return 0;
 }
@@ -38,12 +26,20 @@ int main()
 void traverse()
 {
     int i = 1;
-    nd *temp = first;
-    while (temp != NULL)
+    nd *temp;
+    if (first == NULL)
     {
-        printf("data of node %d: %d\n", i, temp->data);
-        temp = temp->next;
-        i++;
+        printf("linklist is empty");
+    }
+    else
+    {
+        temp = first;
+        while (temp != NULL)
+        {
+            printf("data of node %d: %d\n", i, temp->data);
+            temp = temp->next;
+            i++;
+        }
     }
 }
 
@@ -54,6 +50,7 @@ void insertAtFirst(int data)
     newNode->data = data;
     if (first == NULL)
     {
+        newNode->next = NULL; // yo line xutera traverse ma prob aako raixa infinite loop wala
         first = newNode;
         last = newNode;
     }
@@ -62,5 +59,4 @@ void insertAtFirst(int data)
         newNode->next = first;
         first = newNode;
     }
-    traverse();
 }
