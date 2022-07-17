@@ -68,6 +68,18 @@ int main()
     return 0;
 }
 
+void displayTopElement(){
+    system("cls");
+    if(s.tos==-1)
+    {
+        printf("stack is empty.\npress any key to continue...");
+        getch();
+    }
+    else{
+        printf("%d at index %d is the topmost element of stack.\npress any key to continue...",s.data[s.tos],s.tos);
+        getch();
+    }
+}
 
 void push(int d)
 {
