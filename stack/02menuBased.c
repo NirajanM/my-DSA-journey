@@ -1,17 +1,17 @@
 #include<stdio.h>
 #include<conio.h>
 #include<stdlib.h>
-#define MAX 3 
 
 typedef struct stack{
-    int data[MAX];
+    int *data;
     int tos;
 }stack;
 
 stack s;
+int sos;
 
 void displayTopElement();
-void push(int);
+void push();
 void pop();
 void display();
 
@@ -20,9 +20,9 @@ int main()
     s.tos=-1;
     int userChoice;
     int data;
-    stack first;
-    
-    first.tos=-1;
+    printf("how many data do you want your stack to hold ? : ");
+    scanf("%d",&sos);
+    s.data=malloc(sizeof(int)*sos);
     while(1)
     {//infinite loop because we will have exit function inside
         system("cls");//will clear terminal 
@@ -38,9 +38,7 @@ int main()
                 break;
             }
             case 2:
-                printf("enter the data:");
-                scanf("%d",&data);
-                push(data);
+                push();
                 system("cls");
                 break;
 
@@ -81,19 +79,22 @@ void displayTopElement(){
     }
 }
 
-void push(int d)
+void push()
 {
     system("cls");
-    if((s.tos+1)==MAX)
+    if((s.tos+1)==sos)
     {
         printf("stack is full.\npress any key to continue...");
         getch();
     }
     else
     {
+        int data;
+        printf("enter the data:");
+        scanf("%d",&data);
         ++s.tos;
-        s.data[s.tos]=d;
-        printf("%d was pushed to the stack.\npress any key to continue...",d);
+        s.data[s.tos]=data;
+        printf("%d was pushed to the stack.\npress any key to continue...",data);
         getch();
     }
 }
@@ -108,7 +109,7 @@ void pop()
     }
     else
     {
-        printf("data %d at %d index was removed.\npress any key to continue...",s.data,s.tos--);
+        printf("data %d at %d index was removed.\npress any key to continue...",*(s.data),s.tos--);
         getch();
     }
 }
