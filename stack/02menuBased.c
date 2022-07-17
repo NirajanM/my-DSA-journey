@@ -8,22 +8,25 @@ typedef struct stack{
     int tos;
 }stack;
 
+stack s;
 
-
-void push(stack*,int);
-void pop(stack*);
-void display(stack*);
+void displayTopElement();
+void push(int);
+void pop();
+void display();
 
 int main()
 {
+    s.tos=-1;
     int userChoice;
     int data;
     stack first;
+    
     first.tos=-1;
     while(1)
     {//infinite loop because we will have exit function inside
         system("cls");//will clear terminal 
-        printf("\n\t\tStack ControlPanel\t\t\n1.create a stack\n2.push data to stack\n3.pop data from stack\n4.display stack\n5.exit\n\nYour Choice:");
+        printf("\n\t\tStack ControlPanel\t\t\n1.display the top element of stack\n2.push data to stack\n3.pop data from stack\n4.display stack\n5.exit\n\nYour Choice:");
         scanf("%d",&userChoice);
         system("cls");//will clear terminal 
 
@@ -31,27 +34,23 @@ int main()
         {
             case 1:
             {
-                char name[15];
-                printf("name your stack:");
-                scanf("%s",&name);
-                system("cls");
-                //will work on this a bit later;
+                displayTopElement();
                 break;
             }
             case 2:
                 printf("enter the data:");
                 scanf("%d",&data);
-                push(&first,data);
+                push(data);
                 system("cls");
                 break;
 
             case 3:
-                pop(&first);
+                pop();
                 system("cls");
                 break;
             
             case 4:
-                display(&first);
+                display();
                 system("cls");
                 break;
 
@@ -70,50 +69,50 @@ int main()
 }
 
 
-void push(stack* s, int d)
+void push(int d)
 {
     system("cls");
-    if((s->tos+1)==MAX)
+    if((s.tos+1)==MAX)
     {
         printf("stack is full.\npress any key to continue...");
         getch();
     }
     else
     {
-        ++s->tos;
-        s->data[s->tos]=d;
+        ++s.tos;
+        s.data[s.tos]=d;
         printf("%d was pushed to the stack.\npress any key to continue...",d);
         getch();
     }
 }
 
-void pop(stack *s)
+void pop()
 {
     system("cls");
-    if(s->tos==-1)
+    if(s.tos==-1)
     {
        printf("stack is already empty.\npress any key to continue...");
        getch();
     }
     else
     {
-        printf("data at %d index was removed.\npress any key to continue...",s->tos--);
+        printf("data %d at %d index was removed.\npress any key to continue...",s.data,s.tos--);
         getch();
     }
 }
 
-void display(stack *s)
+void display()
 {
-    if(s->tos==-1)
+    if(s.tos==-1)
     {
         printf("stack is empty.\npress any key to continue...");
         getch();
     }
     else{
         printf("\ndata and index:\n");
-        for(int i=s->tos;i>-1;i--)
+        for(int i=s.tos;i>-1;i--)
         {
-            printf("\n%8d %2d\n",s->data[i],i);
+            printf("\n%8d %2d\n",s.data[i],i);
         }
         printf("\n\n\n\npress any key to continue...");
         getch();
