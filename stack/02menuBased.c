@@ -14,6 +14,7 @@ void displayTopElement();
 void push();
 void pop();
 void display();
+void resizeMyStack();
 
 int main()
 {
@@ -26,7 +27,7 @@ int main()
     while(1)
     {//infinite loop because we will have exit function inside
         system("cls");//will clear terminal 
-        printf("\n\t\tStack ControlPanel\t\t\n1.display the top element of stack\n2.push data to stack\n3.pop data from stack\n4.display stack\n5.exit\n\nYour Choice:");
+        printf("\n\t\tStack ControlPanel\t\t\n1.display the top element of stack\n2.push data to stack\n3.pop data from stack\n4.display stack\n5.exit\n6.resize your stack\n\nYour Choice:");
         scanf("%d",&userChoice);
         system("cls");//will clear terminal 
 
@@ -53,7 +54,13 @@ int main()
                 break;
 
             case 5:
+               free(s.data);
                exit(0);
+                break;
+            
+            case 6:
+                system("cls");
+                resizeMyStack();
                 break;
 
             default:
@@ -131,4 +138,12 @@ void display()
         getch();
         system("cls");
     }
+}
+
+void resizeMyStack(){
+    int newSize;
+    printf("enter new limit of number of data to hold, you want:");
+    scanf("%d",&newSize);
+    int topass=newSize*sizeof(int);
+    s.data=(int *) realloc(s.data, topass);
 }
