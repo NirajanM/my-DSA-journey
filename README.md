@@ -2,4 +2,4 @@
 
 have properly arranged files in specific folder using proper naming convention, feel free to ask me about anything from this repo.
 
-file "creatingLinkList-andTraverse.c" in linklist folder holds the code for creating a simple linked list and a way to travel through every node printing it's data i.e. a traverse function with comments of what's going on.
+for simplicity sake, while going through link list traverse in this way: 01creatingLink.... then 02BestWay..... after that menuBased...., you can watch the remaining two as well but this is all you need and these 3 are well written atlest for me to understand.
